@@ -1,0 +1,42 @@
+<div class="example-container" [hidden]="isLoading">
+  <mat-form-field>
+    <input matInput placeholder="Search" #searchInput />
+  </mat-form-field>
+  <div class="table-container">
+  <mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="userId" class="narrow-column">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>UserId</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.userId }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="id" class="narrow-column">
+      <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.id }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Title</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.title }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="body">
+      <mat-header-cell *matHeaderCellDef>Body</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+          {{ element.body }}
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns;sticky: true"></mat-header-row>
+
+    <mat-row *matRowDef="let row; columns: displayedColumns" (click)="onRowClick(row)"></mat-row>
+
+    <tr class="mat-row no-records-row" *matNoDataRow>
+      <td class="mat-cell no-records-cell" colspan="4">No records found.</td>
+    </tr>
+  </mat-table>
+  </div>
+  <mat-paginator
+    [pageSizeOptions]="[10,15,20]"
+    showFirstLastButtons
+  ></mat-paginator>
+</div>
+
+<div class="example-container">
+  <app-loader *ngIf="isLoading"></app-loader>
+</div>

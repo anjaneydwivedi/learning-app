@@ -1,0 +1,20 @@
+<div class="detail-container">
+    <div class="back-button">
+        <button (click)="goBack()">Back</button>
+    </div>
+    <h2>Item Details</h2>
+    <div class="detail-content">
+      <div class="detail-item">
+        <div class="detail-label">ID:</div>
+        <div class="detail-value">{{ rowData?.id }}</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label">Title:</div>
+        <div class="detail-value">{{ rowData?.title }}</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label">Body:</div>
+        <div class="detail-value">{{ rowData?.body }}</div>
+      </div>
+    </div>
+  </div>
